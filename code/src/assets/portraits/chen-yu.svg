@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720">
+  <defs>
+    <linearGradient id="bg" x1=".1" x2=".9" y1="0" y2="1">
+      <stop stop-color="#edf5f5"/>
+      <stop offset=".62" stop-color="#c4dadd"/>
+      <stop offset="1" stop-color="#356f72"/>
+    </linearGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency=".68" numOctaves="3"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="table" tableValues="0 .07"/></feComponentTransfer>
+    </filter>
+  </defs>
+  <rect width="960" height="720" fill="url(#bg)"/>
+  <rect width="960" height="720" filter="url(#grain)" opacity=".58"/>
+  <rect x="120" y="94" width="720" height="456" rx="26" fill="#fffdf8" opacity=".75"/>
+  <rect x="168" y="148" width="226" height="164" rx="20" fill="#e9f3f6"/>
+  <path d="M218 230h126M281 167v126" stroke="#357a73" stroke-width="22" stroke-linecap="round"/>
+  <rect x="438" y="150" width="332" height="56" rx="14" fill="#244f46" opacity=".86"/>
+  <rect x="438" y="236" width="274" height="38" rx="11" fill="#88aeb1" opacity=".62"/>
+  <rect x="438" y="302" width="306" height="38" rx="11" fill="#88aeb1" opacity=".48"/>
+  <path d="M176 468c70-60 142-60 216 0s148 60 222 0 138-60 192 0" fill="none" stroke="#c65f3c" stroke-width="18" stroke-linecap="round" opacity=".75"/>
+  <circle cx="190" cy="468" r="18" fill="#244f46"/>
+  <circle cx="394" cy="468" r="18" fill="#244f46"/>
+  <circle cx="612" cy="468" r="18" fill="#244f46"/>
+  <circle cx="806" cy="468" r="18" fill="#244f46"/>
+  <rect x="220" y="562" width="520" height="48" rx="14" fill="#17383d" opacity=".82"/>
+</svg>

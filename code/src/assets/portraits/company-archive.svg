@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#f4efe6"/>
+      <stop offset=".45" stop-color="#d9e2dd"/>
+      <stop offset="1" stop-color="#17383d"/>
+    </linearGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency=".65" numOctaves="3"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="table" tableValues="0 .075"/></feComponentTransfer>
+    </filter>
+  </defs>
+  <rect width="960" height="720" fill="url(#bg)"/>
+  <rect width="960" height="720" filter="url(#grain)" opacity=".55"/>
+  <rect x="112" y="94" width="736" height="462" rx="28" fill="#fffdf8" opacity=".78"/>
+  <rect x="158" y="144" width="246" height="338" rx="18" fill="#244f46" opacity=".86"/>
+  <path d="M204 210h150M204 270h112M204 330h146M204 390h92" stroke="#fffdf8" stroke-width="14" stroke-linecap="round" opacity=".76"/>
+  <rect x="454" y="144" width="288" height="82" rx="18" fill="#d3a642" opacity=".72"/>
+  <rect x="454" y="260" width="340" height="58" rx="15" fill="#dce8e5"/>
+  <rect x="454" y="352" width="252" height="58" rx="15" fill="#dce8e5"/>
+  <path d="M574 482c26-86 84-130 172-130" stroke="#c65f3c" stroke-width="18" stroke-linecap="round" fill="none"/>
+  <circle cx="746" cy="352" r="24" fill="#c65f3c"/>
+  <circle cx="574" cy="482" r="24" fill="#244f46"/>
+  <rect x="250" y="570" width="460" height="54" rx="16" fill="#17211f" opacity=".78"/>
+  <path d="M292 598h158M504 598h164" stroke="#fffdf8" stroke-width="12" stroke-linecap="round" opacity=".82"/>
+</svg>

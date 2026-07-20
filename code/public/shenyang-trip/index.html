@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>沈阳两日轻松行程｜可编辑分享版</title>
+  <style>
+    :root{--ink:#1f2933;--muted:#667085;--paper:#fffdf8;--card:#fff;--line:#e8e2d8;--red:#b94732;--red2:#f8e8df;--blue:#315b78;--green:#35725b;--shadow:0 12px 36px rgba(82,65,48,.08)}
+    *{box-sizing:border-box} body{margin:0;background:#f2eee7;color:var(--ink);font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+    .hero{background:linear-gradient(135deg,#7f2f25,#c65e3e);color:#fff;padding:52px max(24px,calc((100% - 1040px)/2));position:relative;overflow:hidden}
+    .hero:after{content:"SY";position:absolute;right:6%;top:-44px;font:800 190px/1 Georgia,serif;opacity:.08}.eyebrow{letter-spacing:.14em;font-weight:700;opacity:.78}.hero h1{font:800 clamp(32px,6vw,62px)/1.08 Georgia,"Songti SC",serif;margin:8px 0 12px}.hero p{margin:0;max-width:680px;opacity:.9}
+    .toolbar{position:sticky;top:0;z-index:10;background:rgba(255,253,248,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .toolbar-inner{max-width:1040px;margin:auto;padding:10px 20px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}.status{margin-left:auto;color:var(--green);font-size:13px}
+    button{border:1px solid var(--line);background:#fff;color:var(--ink);padding:8px 13px;border-radius:999px;cursor:pointer;font:inherit}button:hover{border-color:#c8b7a5;background:#fffaf3}.primary{background:var(--red);border-color:var(--red);color:#fff}
+    main{max-width:1040px;margin:28px auto 70px;padding:0 20px}.notice{background:#fff8e7;border:1px solid #ead79b;border-radius:16px;padding:16px 18px;margin-bottom:22px}.notice strong{color:#805b10}
+    .day{display:grid;grid-template-columns:170px 1fr;gap:24px;margin:30px 0}.date{position:sticky;top:75px;align-self:start}.date .num{font:800 64px/1 Georgia,serif;color:var(--red)}.date h2{margin:5px 0;font-size:20px}.date small{color:var(--muted)}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow);margin-bottom:16px}.card h3{margin:0 0 12px;font-size:18px;color:var(--blue)}
+    .item{display:grid;grid-template-columns:62px 1fr 28px;gap:12px;padding:11px 0;border-top:1px dashed var(--line);align-items:start}.item:first-of-type{border-top:0}.time{font-weight:750;color:var(--red);font-variant-numeric:tabular-nums}.text{min-width:0}.text b{font-weight:700}.del{border:0;padding:2px;background:transparent;color:#b0a79e;border-radius:6px;opacity:.35}.item:hover .del{opacity:1}.add{margin-top:12px;color:var(--blue);border-style:dashed}
+    [contenteditable="true"]{border-radius:5px;outline:none;transition:.15s}[contenteditable="true"]:hover{background:#fff6dd}[contenteditable="true"]:focus{background:#fff1c9;box-shadow:0 0 0 3px #fff1c9}.hint{color:var(--muted);font-size:13px;margin:8px 0 0}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.checklist{list-style:none;margin:0;padding:0}.checklist li{display:grid;grid-template-columns:24px 1fr 28px;gap:9px;padding:9px 0;border-top:1px dashed var(--line)}.checklist li:first-child{border-top:0}.checklist input{width:18px;height:18px;accent-color:var(--red);margin-top:3px}.checklist li:has(input:checked) .label{text-decoration:line-through;color:#98a09d}
+    .links a{color:var(--blue);text-decoration:none;border-bottom:1px solid #a8bcc8}.footer{text-align:center;color:var(--muted);font-size:13px;margin-top:34px}
+    @media(max-width:720px){.hero{padding-top:38px;padding-bottom:38px}.day{grid-template-columns:1fr;gap:10px}.date{position:static;display:flex;align-items:baseline;gap:12px}.date .num{font-size:46px}.date h2{margin:0}.grid{grid-template-columns:1fr}.status{width:100%;margin:0}.item{grid-template-columns:54px 1fr 25px}.card{padding:18px}}
+    @media print{body{background:#fff}.hero{padding:24px;color:#111;background:#fff;border-bottom:2px solid #111}.hero:after,.toolbar,.add,.del,.hint{display:none!important}main{margin:15px auto;padding:0}.day{break-inside:avoid}.card{box-shadow:none}.date{position:static}}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="eyebrow" contenteditable="true">BEIJING → SHENYANG</div>
+    <h1 contenteditable="true">沈阳两日轻松行程</h1>
+    <p contenteditable="true">2026.7.31—8.2 · 少走路 · 留缓冲 · 把体力留给音乐节</p>
+  </header>
+  <nav class="toolbar"><div class="toolbar-inner">
+    <button class="primary" id="editTip">✎ 直接点文字编辑</button>
+    <button id="addNote">＋ 添加备注</button><button id="print">打印 / 导出 PDF</button><button id="reset">恢复默认</button>
+    <span class="status" id="status">修改会自动保存在本机</span>
+  </div></nav>
+  <main id="plan">
+    <section class="notice"><strong>最需要确认：</strong><span contenteditable="true">8月1日上午能否提前入住。若酒店不能保证，建议订7月31日晚并备注“8月1日上午到店，请保留房间”，否则抵达后无法稳定补觉。</span></section>
+
+    <section class="day">
+      <aside class="date"><div class="num">7.31</div><div><h2 contenteditable="true">周五 · 出发</h2><small contenteditable="true">北京站 → 沈阳站</small></div></aside>
+      <div><article class="card editable-list"><h3 contenteditable="true">下班后从容上车</h3>
+        <div class="item"><span class="time" contenteditable="true">20:45</span><div class="text" contenteditable="true">下班出发，乘地铁前往北京站（预计1小时）。</div><button class="del">×</button></div>
+        <div class="item"><span class="time" contenteditable="true">21:45</span><div class="text" contenteditable="true">抵达北京站，吃简餐、取水、上洗手间。</div><button class="del">×</button></div>
+        <div class="item"><span class="time" contenteditable="true">22:15</span><div class="text" contenteditable="true">完成进站安检，前往第五候车室。</div><button class="del">×</button></div>
+        <div class="item"><span class="time" contenteditable="true">23:00</span><div class="text" contenteditable="true"><b>K341 发车</b>。03车06号上铺 / 04车18号中铺；继续候补软卧。</div><button class="del">×</button></div>
+        <button class="add">＋ 添加时间点</button><p class="hint">建议优先保留中铺或软卧，上车后尽快休息。</p>
+      </article></div>
+    </section>
+
+    <section class="day">
+      <aside class="date"><div class="num">8.01</div><div><h2 contenteditable="true">周六 · 音乐节</h2><small contenteditable="true">入住休整 → 和平杯世界足球公园</small></div></aside>
+      <div>
+        <article class="card editable-list"><h3 contenteditable="true">上午｜只做入住和休息</h3>
+          <div class="item"><span class="time" contenteditable="true">08:47</span><div class="text" contenteditable="true">抵达沈阳站，下车后直接打车，不拖行李步行。</div><button class="del">×</button></div>
+          <div class="item"><span class="time" contenteditable="true">09:15</span><div class="text" contenteditable="true">到沈阳火车站太原街地铁站亚朵酒店（中华路192号），入住或寄存行李。</div><button class="del">×</button></div>
+          <div class="item"><span class="time" contenteditable="true">09:30</span><div class="text" contenteditable="true">早餐、洗澡、补觉；不额外安排景点。</div><button class="del">×</button></div>
+          <button class="add">＋ 添加时间点</button>
+        </article>
+        <article class="card editable-list"><h3 contenteditable="true">中午至晚间｜把体力留给现场</h3>
+          <div class="item"><span class="time" contenteditable="true">11:20</span><div class="text" contenteditable="true">起床洗漱，吃一顿正餐，以碳水和蛋白质为主。</div><button class="del">×</button></div>
+          <div class="item"><span class="time" contenteditable="true">12:10</span><div class="text" contenteditable="true">打车前往“和平杯世界足球公园17—26号场地”；预留交通管制后的步行时间。</div><button class="del">×</button></div>
+          <div class="item"><span class="time" contenteditable="true">13:00</span><div class="text" contenteditable="true">入场观演，期间见缝插针坐下休息、补水。</div><button class="del">×</button></div>
+          <div class="item"><span class="time" contenteditable="true">散场</span><div class="text" contenteditable="true">首选提前约10分钟离场去指定上车点；叫不到车则去曹仲站乘9号线。建议22:20前进站，勿卡末班车。</div><button class="del">×</button></div>
+          <button class="add">＋ 添加时间点</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="day">
+      <aside class="date"><div class="num">8.02</div><div><h2 contenteditable="true">周日 · 返京</h2><small contenteditable="true">小河沿早市 → 沈阳站</small></div></aside>
+      <div><article class="card editable-list"><h3 contenteditable="true">早市慢逛，返程留足余量</h3>
+        <div class="item"><span class="time" contenteditable="true">06:30</span><div class="text" contenteditable="true">起床，06:45打车前往小河沿早市（万泉街3号）。</div><button class="del">×</button></div>
+        <div class="item"><span class="time" contenteditable="true">07:05</span><div class="text" contenteditable="true">逛早市、吃早餐，控制在1小时内。</div><button class="del">×</button></div>
+        <div class="item"><span class="time" contenteditable="true">08:00</span><div class="text" contenteditable="true">打车回酒店，08:20—10:40补觉。</div><button class="del">×</button></div>
+        <div class="item"><span class="time" contenteditable="true">11:15</span><div class="text" contenteditable="true">退房，11:25打车前往沈阳站。</div><button class="del">×</button></div>
+        <div class="item"><span class="time" contenteditable="true">12:51</span><div class="text" contenteditable="true"><b>G148 静音二等座返京</b>，15:22抵达北京朝阳站。</div><button class="del">×</button></div>
+        <button class="add">＋ 添加时间点</button>
+      </article></div>
+    </section>
+
+    <section class="grid">
+      <article class="card"><h3 contenteditable="true">音乐节最小必备清单</h3><ul class="checklist" id="packing">
+        <li><input type="checkbox"><span class="label" contenteditable="true">身份证、门票截图</span><button class="del">×</button></li>
+        <li><input type="checkbox"><span class="label" contenteditable="true">手机、充电宝、充电线</span><button class="del">×</button></li>
+        <li><input type="checkbox"><span class="label" contenteditable="true">遮阳帽、冰袖、非喷雾防晒霜</span><button class="del">×</button></li>
+        <li><input type="checkbox"><span class="label" contenteditable="true">冰感毛巾、小扇子、防蚊用品</span><button class="del">×</button></li>
+        <li><input type="checkbox"><span class="label" contenteditable="true">薄外套、舒适软底鞋</span><button class="del">×</button></li>
+        <li><input type="checkbox"><span class="label" contenteditable="true">轻便坐垫、纸巾、湿巾、小垃圾袋</span><button class="del">×</button></li>
+        <li><input type="checkbox"><span class="label" contenteditable="true">空软水袋、少量独立包装零食（以官方须知为准）</span><button class="del">×</button></li>
+      </ul><button class="add" data-checklist="packing">＋ 添加清单项</button></article>
+      <article class="card"><h3 contenteditable="true">现场策略与待确认</h3><ul class="checklist" id="confirm">
+        <li><input type="checkbox"><span class="label" contenteditable="true">联系酒店确认上午提前入住</span><button class="del">×</button></li>
+        <li><input type="checkbox"><span class="label" contenteditable="true">出发前复核K341、G148车次与检票口</span><button class="del">×</button></li>
+        <li><input type="checkbox"><span class="label" contenteditable="true">查看官方观演须知、节目单和天气</span><button class="del">×</button></li>
+        <li><input type="checkbox"><span class="label" contenteditable="true">确认空水袋、食物、坐垫能否入场</span><button class="del">×</button></li>
+        <li><input type="checkbox"><span class="label" contenteditable="true">散场前查看地铁是否延时运营</span><button class="del">×</button></li>
+      </ul><button class="add" data-checklist="confirm">＋ 添加待办</button></article>
+    </section>
+
+    <article class="card links"><h3 contenteditable="true">已核对信息</h3><div contenteditable="true">
+      <a href="https://sy.bendibao.com/xiuxian/202662/86251.shtm" target="_blank">音乐节时间与场地</a>　
+      <a href="https://trains.ctrip.com/TrainSchedule/G148/" target="_blank">G148时刻</a>　
+      <a href="https://hotels.ctrip.com/hotels/40363600.html" target="_blank">酒店地址</a>　
+      <a href="https://www.amap.com/place/B0L6NM9DOU" target="_blank">小河沿早市地图</a>
+    </div></article>
+    <p class="footer">最后更新：2026-07-20 · 所有黄色高亮文字均可直接编辑，数据只保存在当前浏览器。</p>
+  </main>
+  <script>
+    const key='shenyang-trip-plan-v1', plan=document.querySelector('#plan'), status=document.querySelector('#status');
+    const defaults=plan.innerHTML;
+    function save(){localStorage.setItem(key,plan.innerHTML);status.textContent='✓ 已自动保存 '+new Date().toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit'});}
+    const saved=localStorage.getItem(key); if(saved) plan.innerHTML=saved;
+    let timer; plan.addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(save,250)});
+    plan.addEventListener('change',save);
+    plan.addEventListener('click',e=>{
+      if(e.target.matches('.del')){const row=e.target.closest('.item,li,.notice');if(row&&confirm('删除这一项？')){row.remove();save()}}
+      if(e.target.matches('.editable-list .add')){e.target.insertAdjacentHTML('beforebegin','<div class="item"><span class="time" contenteditable="true">时间</span><div class="text" contenteditable="true">点击填写行程内容</div><button class="del">×</button></div>');save()}
+      if(e.target.dataset.checklist){document.querySelector('#'+e.target.dataset.checklist).insertAdjacentHTML('beforeend','<li><input type="checkbox"><span class="label" contenteditable="true">点击填写清单项目</span><button class="del">×</button></li>');save()}
+    });
+    document.querySelector('#addNote').onclick=()=>{plan.insertAdjacentHTML('beforeend','<section class="notice"><strong contenteditable="true">自定义备注：</strong><span contenteditable="true">点击这里填写内容</span><button class="del" style="float:right">×</button></section>');save();plan.querySelectorAll('[contenteditable]').item(plan.querySelectorAll('[contenteditable]').length-1).focus()};
+    document.querySelector('#print').onclick=()=>window.print();
+    document.querySelector('#editTip').onclick=()=>{const first=plan.querySelector('[contenteditable]');first.focus();first.scrollIntoView({behavior:'smooth',block:'center'})};
+    document.querySelector('#reset').onclick=()=>{if(confirm('确定恢复初始版本？你做过的修改和勾选记录会被清除。')){plan.innerHTML=defaults;localStorage.removeItem(key);status.textContent='已恢复初始版本'}};
+  </script>
+</body>
+</html>
